@@ -144,7 +144,7 @@ class DensityEstimator(BaseEstimator, TransformerMixin):
                 
             else:
                 data_path = os.path.join(os.getcwd(), 'utils', 'training', 'files')
-            file_df = pd.read_csv(os.path.join(data_path, file))
+            file_df = pd.read_csv(os.path.join(data_path, file).replace('\\', '/'))
 
             radius_km = 0.1
 
