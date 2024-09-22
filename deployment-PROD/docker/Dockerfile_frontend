@@ -1,0 +1,23 @@
+FROM python:3.11.2-slim
+
+WORKDIR /app
+
+# Crear directorios necesarios en el contenedor
+RUN mkdir -p utils/deployment\
+    && mkdir -p utils/data_collection\
+    && mkdir -p model
+
+# Copiar los archivos necesarios al contenedor
+COPY deployment-PROD/docker/requirements_frontend.txt /app
+COPY client/ui.py /app
+COPY utils/deployment/geo_codification.py /app/utils/deployment
+COPY utils/deployment/model_loader.py /app/utils/deployment
+COPY model /app/model
+
+# Instalar dependencias desde requirements.txt
+RUN pip install --no-cache-dir -r requirements_frontend.txt
+
+# Exponer el puerto en el contenedor
+EXPOSE 9000
+
+CMD ["streamlit", "run", "ui.py", "--server.port", "9000", "--server.address", "0.0.0.0"]

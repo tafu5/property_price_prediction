@@ -1,0 +1,6 @@
+# Set directory
+set PYTHONPATH=%PYTHONPATH%;C:\Users\User\Desktop\valen\property_prediction
+
+# Initial ETL to get historic property data
+python ETL/initial_etl.py
+

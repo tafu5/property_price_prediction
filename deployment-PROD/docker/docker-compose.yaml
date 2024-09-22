@@ -1,0 +1,32 @@
+services:
+  fastapi_service:
+    build:
+      context: ../../ # El directorio donde está tu D ockerfile
+      dockerfile: deployment-PROD/docker/Dockerfile_backend
+    image: property_backend:latest
+    ports:
+      - "8010:8000"  # Mapea el puerto 8000 dentro del contenedor al puerto 8010 del host
+    networks:
+      - app-network
+    deploy:
+      replicas: 1  # Define el número de réplicas si usas Swarm
+      restart_policy:
+        condition: on-failure
+
+  ui:
+    build:
+      context: ../../ # El directorio donde está tu Dockerfile
+      dockerfile: deployment-PROD/docker/Dockerfile_frontend
+    image: property_frontend:latest
+    ports:
+      - "9010:9000"  # Mapea el puerto 9000 dentro del contenedor al puerto 9010 del host
+    networks:
+      - app-network
+    deploy:
+      replicas: 1  # Define el número de réplicas si usas Swarm
+      restart_policy:
+        condition: on-failure
+
+networks:
+  app-network:
+    driver: bridge

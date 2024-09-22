@@ -1,0 +1,27 @@
+FROM python:3.11.2-slim
+
+WORKDIR /app
+
+# Crear directorios necesarios en el contenedor
+RUN mkdir -p utils/training\
+    && mkdir -p utils/deployment\
+    && mkdir -p utils/data_collection\
+    && mkdir -p deployment-PROD/service\
+    && mkdir -p model
+
+# Copiar los archivos necesarios al contenedor
+COPY deployment-PROD/docker/requirements_backend.txt /app
+COPY deployment-PROD/service/fastapi_service.py /app/deployment-PROD/service
+COPY utils/training /app/utils/training
+COPY utils/deployment /app/utils/deployment
+COPY utils/data_collection/classes.py /app/utils/data_collection
+COPY model /app/model
+
+# Instalar dependencias desde requirements.txt
+RUN pip install --no-cache-dir -r requirements_backend.txt
+
+# Exponer el puerto en el contenedor
+EXPOSE 8000
+
+# Comando para ejecutar la aplicación FastAPI
+CMD ["uvicorn", "deployment-PROD.service.fastapi_service:app", "--host", "0.0.0.0", "--port", "8000"]
