@@ -24,3 +24,15 @@ Each stage of the project is organized into separate folders:
 
 **Conclusion**
 The project is deployed on a server using Google Cloud Platform (GCP) with a Linux operating system, making it accessible for anyone interested in predicting property prices.
+
+**Screenshots**
+*DEV ENVIRONMENT*: by Postman 
+![dev_example](https://github.com/user-attachments/assets/2c98c4d8-8e96-4839-8a9b-2e9aecc848f3)
+
+*PROD ENVIRONMENT*: by a custom UI
+PREDICTION:
+![prod_example_1](https://github.com/user-attachments/assets/3bc2d563-a7fb-4b46-9cec-032fddce2357)
+![prod_example_2](https://github.com/user-attachments/assets/a7522369-8a41-414d-a7c3-ad7d5b50064d)
+
+REAL:
+![prod_example_3](https://github.com/user-attachments/assets/2ceddbdc-ed7b-445f-baa6-436a849ba4c3)
