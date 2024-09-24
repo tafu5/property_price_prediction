@@ -3,6 +3,9 @@
 **Project Overview**
 This project is an end-to-end development aimed at predicting property prices in the Federal Capital of Argentina. It encompasses the entire process from data extraction to transformation, model training and validation, deployment, and ongoing monitoring. The target audience includes both end-users interested in determining whether a property price aligns with market values and real estate agencies seeking a quick quotation for properties.
 
+**Workflow**
+[output_graph.pdf](https://github.com/user-attachments/files/17118802/output_graph.pdf)
+
 **Project Structure**
 Each stage of the project is organized into separate folders:
 
